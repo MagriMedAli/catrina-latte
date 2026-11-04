@@ -1,0 +1,132 @@
+/* ---------- Lantern ---------- */
+
+.lantern {
+  position: absolute;
+  top: 0;
+  transform-origin: 50% 0;
+  animation: lantern-sway 7s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+.lantern svg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.lantern__glow {
+  position: absolute;
+  left: 50%;
+  width: 340%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 196, 90, 0.42) 0%, rgba(255, 170, 60, 0.12) 35%, transparent 65%);
+  animation: lantern-glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes lantern-sway {
+  0%,
+  100% {
+    transform: rotate(-1.6deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+@keyframes lantern-glow {
+  from {
+    opacity: 0.75;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Papel picado ---------- */
+
+.papel {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+}
+.papel__string {
+  position: absolute;
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: 40px;
+  overflow: visible;
+}
+.papel__flags {
+  display: flex;
+  justify-content: space-around;
+  padding-inline: 1%;
+}
+.papel__flag {
+  width: clamp(38px, 6vw, 78px);
+  height: auto;
+  margin-top: 4px;
+  transform-origin: 50% 0;
+  animation: papel-flutter 4.5s ease-in-out infinite;
+}
+@keyframes papel-flutter {
+  0%,
+  100% {
+    transform: rotate(-3deg) skewX(-1deg);
+  }
+  50% {
+    transform: rotate(3deg) skewX(1deg);
+  }
+}
+
+/* ---------- Drink illustrations ---------- */
+
+.drink {
+  overflow: visible;
+}
+.drink .steam path {
+  animation: steam-rise 3.2s ease-in-out infinite;
+}
+.drink .steam path:nth-child(2) {
+  animation-delay: -1.1s;
+}
+.drink .steam path:nth-child(3) {
+  animation-delay: -2.2s;
+}
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+/* ---------- Organic section edges ---------- */
+
+.wave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(40px, 7vw, 110px);
+  pointer-events: none;
+  z-index: 2;
+  /* the path bleeds past the box so no hairline seam shows at fractional DPR */
+  overflow: visible;
+}
+.wave--top {
+  top: -1px;
+}
+/* overlap the previous section slightly so no hairline shows at fractional pixel offsets */
+section:has(> .wave--top),
+footer:has(> .wave--top) {
+  margin-top: -2px;
+}
+.wave--bottom {
+  bottom: -2px;
+}

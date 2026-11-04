@@ -1,0 +1,53 @@
+/* lets the tilted band run past the screen edges without causing horizontal scroll */
+.marquee-clip {
+  position: relative;
+  z-index: 5;
+  margin-top: clamp(-4.5rem, -5vw, -2.5rem);
+  overflow-x: clip;
+  overflow-y: visible;
+}
+.marquee {
+  position: relative;
+  margin-inline: -2vw;
+  padding: 1.05rem 0;
+  background: var(--navy);
+  color: var(--cream);
+  rotate: -2deg;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -20px rgba(23, 23, 47, 0.5);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee__group {
+  display: flex;
+  flex: none;
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  white-space: nowrap;
+}
+.marquee__serif {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-style: italic;
+  font-weight: 300;
+}
+.marquee__script {
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  color: var(--marigold);
+}
+.marquee__flower {
+  width: 22px;
+  height: 22px;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

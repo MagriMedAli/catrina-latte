@@ -1,0 +1,48 @@
+.open-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--navy) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cream) 22%, transparent);
+  font-size: 0.82rem;
+  color: var(--cream);
+}
+.open-badge strong {
+  font-weight: 600;
+}
+.open-badge span:last-child {
+  opacity: 0.8;
+}
+.open-badge__dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #5be08a;
+}
+.open-badge__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-dot 1.8s ease-out infinite;
+}
+.open-badge.is-closed .open-badge__dot {
+  background: var(--coral);
+}
+.open-badge.is-closed .open-badge__dot::after {
+  animation: none;
+}
+@keyframes pulse-dot {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

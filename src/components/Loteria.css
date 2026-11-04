@@ -1,0 +1,275 @@
+.loteria {
+  position: relative;
+  padding: clamp(11rem, 16vw, 14rem) 0 clamp(7rem, 11vw, 10rem);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(243, 154, 57, 0.12), transparent 70%),
+    var(--cream);
+  overflow: hidden;
+}
+
+.loteria__papel {
+  position: absolute !important;
+  top: clamp(3.6rem, 8vw, 7.6rem);
+  left: 0;
+  z-index: 3;
+}
+
+.loteria__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.loteria__eyebrow {
+  color: var(--coral);
+  margin-bottom: 1.3rem;
+}
+.loteria__head h2 {
+  max-width: 16ch;
+}
+.loteria__head h2 em {
+  color: var(--purple);
+}
+.loteria__intro {
+  max-width: 30rem;
+  margin-top: 1.5rem;
+  color: color-mix(in srgb, var(--navy) 72%, transparent);
+}
+
+/* ---------- Deck ---------- */
+
+.loteria__deck {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.6vw, 2.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  perspective: 1400px;
+}
+
+.lcard {
+  aspect-ratio: 5 / 7.4;
+}
+.lcard__btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+}
+.lcard__btn:focus-visible {
+  outline-offset: 6px;
+}
+.lcard__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.lcard__face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow:
+    0 2px 0 rgba(23, 23, 47, 0.08),
+    0 28px 50px -24px rgba(23, 23, 47, 0.45);
+}
+
+/* front: printed card */
+.lcard__front {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: var(--ivory);
+  border: 2px solid var(--navy);
+}
+.lcard__front::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--navy);
+  border-radius: 11px;
+  pointer-events: none;
+}
+.lcard__num {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--navy);
+  border-radius: 50%;
+  background: var(--ivory);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.lcard__art {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  margin: 4px 4px 0;
+  border-radius: 9px 9px 0 0;
+  background:
+    radial-gradient(circle at 50% 55%, color-mix(in srgb, #fff 22%, transparent) 0 34%, transparent 35%),
+    var(--card);
+  overflow: hidden;
+}
+.lcard__art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Cg fill='%23fff'%3E%3Cellipse cx='12' cy='8' rx='2' ry='3'/%3E%3Cellipse cx='12' cy='16' rx='2' ry='3'/%3E%3Cellipse cx='8' cy='12' rx='3' ry='2'/%3E%3Cellipse cx='16' cy='12' rx='3' ry='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 40px;
+}
+.lcard__art .drink {
+  position: relative;
+  width: 82%;
+  height: auto;
+  transition: transform 0.8s var(--ease);
+}
+.lcard__btn:hover .lcard__art .drink {
+  transform: scale(1.06) rotate(-3deg);
+}
+.lcard__name {
+  margin: 0 4px 4px;
+  padding: 0.6rem 0.4rem 0.55rem;
+  border-top: 2px solid var(--navy);
+  border-radius: 0 0 9px 9px;
+  background: var(--ivory);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--navy);
+}
+.lcard__glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.28), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.lcard__btn:hover .lcard__glare {
+  opacity: 1;
+}
+
+/* back: navy with marigold pattern */
+.lcard__back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  color: var(--cream);
+  background:
+    radial-gradient(circle at 50% 120%, color-mix(in srgb, var(--card) 70%, transparent), transparent 60%),
+    var(--navy);
+  border: 2px solid var(--card);
+}
+.lcard__back::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed color-mix(in srgb, var(--marigold) 55%, transparent);
+  border-radius: 10px;
+  pointer-events: none;
+}
+.lcard__from {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--marigold);
+}
+.lcard__item {
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.lcard__desc {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--cream) 80%, transparent);
+}
+.lcard__price {
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--marigold);
+}
+.lcard__price small {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.lcard__n {
+  position: absolute;
+  bottom: 18px;
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: color-mix(in srgb, var(--cream) 55%, transparent);
+}
+
+.loteria__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+@media (max-width: 1000px) {
+  .loteria__deck {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 640px;
+    margin-inline: auto;
+  }
+}
+
+/* phones: swipeable deck */
+@media (max-width: 600px) {
+  .loteria__deck {
+    display: flex;
+    gap: 1rem;
+    max-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 1rem var(--gutter) 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .loteria__deck::-webkit-scrollbar {
+    display: none;
+  }
+  .lcard {
+    flex: 0 0 68vw;
+    scroll-snap-align: center;
+  }
+}

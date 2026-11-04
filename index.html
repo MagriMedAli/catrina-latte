@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catrina Latte — Café à Monastir, Tunisie</title>
+    <meta
+      name="description"
+      content="Catrina Latte est un café coloré d’inspiration mexicaine à Monastir, en Tunisie. Murs turquoise, fresques fleuries, lanternes chaleureuses, café, desserts et bons moments. Ouvert tous les jours de 07:00 à 01:00."
+    />
+    <meta name="theme-color" content="#087F83" />
+    <link rel="canonical" href="__SITE_URL__/" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Catrina Latte" />
+
+    <!-- link previews (WhatsApp, Facebook, Instagram, iMessage) need absolute URLs -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Catrina Latte" />
+    <meta property="og:locale" content="fr_TN" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:url" content="__SITE_URL__/" />
+    <meta property="og:title" content="Catrina Latte — Café à Monastir" />
+    <meta
+      property="og:description"
+      content="Plus qu’un café. Un petit brin de magie — un café d’inspiration mexicaine à Monastir, ouvert tous les jours de 07:00 à 01:00."
+    />
+    <meta property="og:image" content="__SITE_URL__/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Le logo Catrina Latte à côté de la fresque fleurie du café" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Yellowtail&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/images/catrina-logo.webp" type="image/webp" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Catrina Latte",
+        "url": "__SITE_URL__/",
+        "image": "__SITE_URL__/images/og-image.jpg",
+        "logo": "__SITE_URL__/icon-512.png",
+        "servesCuisine": ["Coffee", "Desserts"],
+        "currenciesAccepted": "TND",
+        "telephone": "+216 56 874 550",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "07:00",
+            "closes": "01:00"
+          }
+        ],
+        "sameAs": ["https://www.instagram.com/catrina_latte/"],
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=QR8H%2B5CH%20Monastir",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Monastir",
+          "addressCountry": "TN"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p style="padding: 2rem; font-family: sans-serif">
+        Catrina Latte — café à Monastir. Ouvert tous les jours de 07:00 à 01:00. Tél. +216 56 874 550 ·
+        <a href="https://www.instagram.com/catrina_latte/">@catrina_latte</a>
+      </p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

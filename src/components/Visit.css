@@ -1,0 +1,205 @@
+.visit {
+  position: relative;
+  padding: clamp(8rem, 12vw, 11rem) 0 clamp(6rem, 10vw, 9rem);
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--cream);
+  background:
+    radial-gradient(ellipse 45% 40% at 85% 10%, rgba(255, 190, 90, 0.18), transparent 70%),
+    var(--turquoise);
+}
+
+.visit__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+
+.visit__eyebrow {
+  color: var(--marigold);
+  margin-bottom: 1.3rem;
+}
+.visit__title {
+  color: var(--cream);
+}
+.visit__title .script {
+  display: inline-block;
+  font-size: 1.05em;
+  color: var(--marigold);
+  rotate: -5deg;
+  margin-left: 0.1em;
+}
+.visit__lead {
+  max-width: 28rem;
+  margin-top: 1.5rem;
+  font-size: 1.08rem;
+  color: color-mix(in srgb, var(--cream) 85%, transparent);
+}
+
+.visit__list {
+  margin: 2.5rem 0 0;
+  display: grid;
+  gap: 0;
+}
+.visit__row {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--cream) 18%, transparent);
+}
+.visit__row:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--cream) 18%, transparent);
+}
+.visit__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--cream) 12%, transparent);
+  color: var(--marigold);
+}
+.visit__icon svg {
+  width: 20px;
+  height: 20px;
+}
+.visit__row > div {
+  flex: 1;
+  min-width: 0;
+}
+.visit__row dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cream) 70%, transparent);
+}
+.visit__row dt .tbc {
+  letter-spacing: 0.1em;
+  color: var(--marigold);
+  opacity: 0.95;
+}
+.visit__row dd {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 380;
+}
+
+.visit__row dd a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--marigold) 60%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: color 0.3s var(--ease);
+}
+.visit__row dd a:hover,
+.visit__row dd a:focus-visible {
+  color: var(--marigold);
+}
+
+.visit__sub {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--cream) 62%, transparent);
+}
+
+.visit__badge {
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+}
+
+.visit__hours {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 24rem;
+}
+.visit__hours li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.visit__hours-dots {
+  flex: 1;
+  border-bottom: 1.5px dotted color-mix(in srgb, var(--cream) 35%, transparent);
+  translate: 0 -4px;
+}
+
+.visit__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2.5rem;
+}
+.visit__ctas .btn {
+  --fill: var(--cream);
+  --fill-fg: var(--teal-deep);
+}
+
+/* ---------- Map ---------- */
+
+.visit__map-wrap {
+  position: relative;
+  padding-top: 60px;
+}
+.visit__lantern {
+  left: 50%;
+  top: -10px !important;
+  margin-left: -35px;
+  z-index: 3;
+}
+.visit__map {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 620px;
+  width: 100%;
+  border-radius: 999px 999px 18px 18px;
+  overflow: hidden;
+  background: var(--teal);
+  border: 10px solid var(--cream);
+  box-shadow: 0 50px 80px -40px rgba(2, 30, 33, 0.7);
+}
+.visit__map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: saturate(0.85) contrast(1.02);
+}
+.visit__flora {
+  position: absolute;
+  left: -40px;
+  bottom: -10px;
+  width: 200px;
+  height: 160px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .visit__grid {
+    grid-template-columns: 1fr;
+  }
+  .visit__map-wrap {
+    width: min(100%, 460px);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .visit__flora {
+    scale: 0.75;
+    transform-origin: bottom left;
+    left: -20px;
+  }
+}
