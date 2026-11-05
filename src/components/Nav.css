@@ -39,15 +39,58 @@
 .nav__brand:hover img {
   transform: rotate(-8deg) scale(1.05);
 }
-.nav__place {
+/* hand-lettered "Catrina" over a flower-flanked "Latte", like the painted signs in the café */
+.nav__word {
   display: flex;
   flex-direction: column;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  align-items: center;
+  line-height: 1;
+}
+.nav__word-script {
+  padding: 0 0.12em;
+  font-family: var(--font-script);
+  font-size: 1.85rem;
+  color: var(--marigold);
+  rotate: -5deg;
+  text-shadow: 0 2px 0 color-mix(in srgb, var(--teal-deep) 35%, transparent);
+  transition:
+    rotate 0.6s var(--ease),
+    color 0.5s var(--ease);
+}
+.nav--solid .nav__word-script {
+  color: var(--coral);
+  text-shadow: 0 2px 0 color-mix(in srgb, var(--orange) 30%, transparent);
+}
+.nav__brand:hover .nav__word-script {
+  rotate: -9deg;
+}
+.nav__word-latte {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.1rem;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  line-height: 1.35;
-  opacity: 0.85;
+}
+/* letter-spacing trails after the last letter; pull the right flower back in */
+.nav__word-latte .nav__word-flower:last-child {
+  margin-left: -0.42em;
+}
+.nav__word-flower {
+  width: 10px;
+  height: 10px;
+  color: var(--coral);
+  transition: rotate 0.8s var(--ease);
+}
+.nav__word-flower:last-child {
+  color: var(--turquoise);
+}
+.nav__brand:hover .nav__word-flower {
+  rotate: 90deg;
 }
 
 .nav__links {

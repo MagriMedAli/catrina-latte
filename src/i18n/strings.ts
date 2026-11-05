@@ -10,7 +10,6 @@ const en = {
   nav: {
     links: { about: 'About', signatures: 'Signatures', menu: 'Menu', gallery: 'Gallery', visit: 'Visit' },
     findUs: 'Find Us',
-    place: ['Café', 'Monastir'],
     home: 'Catrina Latte — back to top',
     open: 'Open menu',
     close: 'Close menu',
@@ -167,7 +166,6 @@ const fr: Strings = {
   nav: {
     links: { about: 'À propos', signatures: 'Signatures', menu: 'Carte', gallery: 'Galerie', visit: 'Visite' },
     findUs: 'Nous trouver',
-    place: ['Café', 'Monastir'],
     home: 'Catrina Latte — retour en haut',
     open: 'Ouvrir le menu',
     close: 'Fermer le menu',

@@ -4,7 +4,7 @@ import { navIds } from '../data/site';
 import { useLang } from '../i18n/useLang';
 import { Bloom, Leaf, Marigold, Rose } from './decor/Flora';
 import { Lantern } from './decor/Lantern';
-import { ArrowIcon, CloseIcon, MenuIcon } from './ui/Icons';
+import { ArrowIcon, CloseIcon, FlowerMark, MenuIcon } from './ui/Icons';
 import { LangToggle } from './ui/LangToggle';
 import { ease } from './ui/motion';
 import './Nav.css';
@@ -35,9 +35,13 @@ export function Nav() {
         <div className="nav__inner container">
           <a href="#top" className="nav__brand" aria-label={t.nav.home}>
             <img src="/images/catrina-mark.webp" alt="" width={48} height={48} />
-            <span className="nav__place">
-              <span>{t.nav.place[0]}</span>
-              <span>{t.nav.place[1]}</span>
+            <span className="nav__word" aria-hidden="true">
+              <span className="nav__word-script">Catrina</span>
+              <span className="nav__word-latte">
+                <FlowerMark className="nav__word-flower" />
+                Latte
+                <FlowerMark className="nav__word-flower" />
+              </span>
             </span>
           </a>
 
