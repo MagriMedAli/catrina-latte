@@ -124,7 +124,7 @@ const en = {
       {
         script: 'La hora dorada',
         title: 'Golden hour',
-        text: 'The sun sinks over Monastir and the mojitos come out: mint, berries, blue curaçao and fresh fruit.',
+        text: 'The sun sinks over Monastir and the mojitos come out: mint, berries, lychee and fresh fruit.',
       },
       {
         script: 'Noches de Catrina',
@@ -281,7 +281,7 @@ const fr: Strings = {
       {
         script: 'La hora dorada',
         title: 'L’heure dorée',
-        text: 'Le soleil descend sur Monastir et les mojitos arrivent : menthe, fruits rouges, curaçao bleu et fruits frais.',
+        text: 'Le soleil descend sur Monastir et les mojitos arrivent : menthe, fruits rouges, litchi et fruits frais.',
       },
       {
         script: 'Noches de Catrina',

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState, type KeyboardEvent } from 'react';
+import { useRef, useState, type KeyboardEvent } from 'react';
 import { menu, type MenuItem, type MenuSection } from '../data/menu';
 import type { Lang } from '../i18n/strings';
 import { useLang } from '../i18n/useLang';
@@ -13,19 +13,39 @@ import './Menu.css';
 
 const itemName = (item: MenuItem, lang: Lang) => (typeof item.name === 'string' ? item.name : item.name[lang]);
 
+// "54 DT" for whole prices, "9,5 DT" otherwise — as on the printed menu
 const formatPrice = (price: number, lang: Lang) =>
-  new Intl.NumberFormat(lang === 'fr' ? 'fr-TN' : 'en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(price);
+  new Intl.NumberFormat(lang === 'fr' ? 'fr-TN' : 'en-GB', {
+    minimumFractionDigits: Number.isInteger(price) ? 0 : 1,
+    maximumFractionDigits: 1,
+  }).format(price);
 
 export function Menu() {
   const { t, lang } = useLang();
-  const [active, setActive] = useState<MenuSection['id']>('coffee');
+  const [active, setActive] = useState<MenuSection['id']>(menu[0].id);
   const section = menu.find((s) => s.id === active)!;
+  const sheetRef = useRef<HTMLDivElement>(null);
+
+  // switching tabs from deep inside a long list jumps back to the top of the sheet
+  const select = (id: MenuSection['id']) => {
+    setActive(id);
+    // keep the chosen tab visible in the horizontally scrolling tab row
+    const tab = document.getElementById(`menu-tab-${id}`);
+    const row = tab?.parentElement;
+    if (tab && row) row.scrollTo({ left: tab.offsetLeft - (row.clientWidth - tab.offsetWidth) / 2, behavior: 'smooth' });
+    const sheet = sheetRef.current;
+    const list = document.getElementById('menu-panel');
+    const bar = row?.parentElement;
+    if (sheet && list && bar && list.getBoundingClientRect().top < bar.getBoundingClientRect().bottom) {
+      sheet.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  };
 
   // arrow-key navigation between tabs (WAI-ARIA tabs pattern)
   const onTabKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
     const next = menu[(i + (e.key === 'ArrowRight' ? 1 : menu.length - 1)) % menu.length];
-    setActive(next.id);
+    select(next.id);
     document.getElementById(`menu-tab-${next.id}`)?.focus();
   };
 
@@ -53,7 +73,7 @@ export function Menu() {
           </Reveal>
         </header>
 
-        <Reveal delay={0.12}>
+        <Reveal delay={0.12} className="menu__tabs-bar">
           <div className="menu__tabs" role="tablist" aria-label={t.menu.tabs}>
             {menu.map((s, i) => (
               <button
@@ -65,7 +85,7 @@ export function Menu() {
                 aria-controls="menu-panel"
                 tabIndex={active === s.id ? 0 : -1}
                 className={`menu__tab ${active === s.id ? 'is-active' : ''}`}
-                onClick={() => setActive(s.id)}
+                onClick={() => select(s.id)}
                 onKeyDown={(e) => onTabKey(e, i)}
               >
                 {active === s.id && (
@@ -78,6 +98,7 @@ export function Menu() {
         </Reveal>
 
         <motion.div
+          ref={sheetRef}
           className="menu__sheet"
           initial={{ opacity: 0, y: 60, rotate: 0 }}
           whileInView={{ opacity: 1, y: 0, rotate: -0.4 }}

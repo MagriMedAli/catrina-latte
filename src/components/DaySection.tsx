@@ -25,36 +25,36 @@ const MOMENTS: Moment[] = [
     time: '07:00',
     Art: Espresso,
     picks: [
-      { name: 'Expresso', price: 3.2 },
-      { name: 'Capucin', price: 3.4 },
-      { name: 'Café crème', price: 3.8 },
+      { name: 'Espresso', price: 3.5 },
+      { name: 'Capucin', price: 3.6 },
+      { name: 'Café crème', price: 4.0 },
     ],
   },
   {
     time: '14:00',
     Art: Tiramisu,
     picks: [
-      { name: t('Cheesecake pistache', 'Pistachio cheesecake'), price: 9.5 },
-      { name: t('Fondant chocolat', 'Chocolate fondant'), price: 7.5 },
-      { name: 'Tiramisu Spéculoos', price: 7.5 },
+      { name: t('Cheesecake pistache', 'Pistachio cheesecake'), price: 10.5 },
+      { name: t('Fondant chocolat', 'Chocolate fondant'), price: 8.0 },
+      { name: 'Tiramisu Spéculoos', price: 8.5 },
     ],
   },
   {
     time: '18:30',
     Art: MintMojito,
     picks: [
-      { name: 'Virgin Mojito', price: 8.5 },
-      { name: 'Strawberry Mojito', price: 9.5 },
-      { name: t('Cocktail Tropical', 'Tropical cocktail'), price: 13.5 },
+      { name: 'Virgin Mojito', price: 9.5 },
+      { name: 'Strawberry Mojito', price: 11.5 },
+      { name: t('Cocktail Sunset', 'Sunset cocktail'), price: 15.5 },
     ],
   },
   {
     time: '23:00',
     Art: HotChocolate,
     picks: [
-      { name: 'Spanish Latte', price: 8.0 },
-      { name: t('Chocolat Nutella', 'Nutella hot chocolate'), price: 8.5 },
-      { name: 'San Sebastián Nutella', price: 11.5 },
+      { name: 'Spanish Latte', price: 9.8 },
+      { name: t('Chocolat Nutella', 'Nutella hot chocolate'), price: 9.5 },
+      { name: 'San Sebastián Nutella', price: 12.5 },
     ],
   },
 ];
