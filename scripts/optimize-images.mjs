@@ -84,19 +84,33 @@ async function cutoutLogo() {
   await sharp(mark).resize(180).flatten({ background: '#FFF4E5' }).png(png).toFile('public/apple-touch-icon.png');
 }
 
-async function interior() {
-  const src = 'assets-src/interior.webp';
-  await sharp(src).webp({ quality: 84 }).toFile(`${OUT}/interior.webp`);
-  await sharp(src).resize({ width: 480 }).webp({ quality: 80 }).toFile(`${OUT}/interior-480.webp`);
-
-  const crops = {
-    'interior-mural': { left: 300, top: 380, width: 465, height: 330 },
-    'interior-lanterns': { left: 60, top: 0, width: 640, height: 420 },
-    'interior-face': { left: 370, top: 400, width: 200, height: 220 },
-  };
-  for (const [name, region] of Object.entries(crops)) {
-    await sharp(src).extract(region).webp({ quality: 84 }).toFile(`${OUT}/${name}.webp`);
+/**
+ * The café's own photos (iPhone, 2400px copies in /assets-src/photos).
+ * Each gets a large version for the lightbox and a small one for the grid on phones,
+ * with a light sharpen and a touch of extra colour.
+ */
+async function photos() {
+  const names = [
+    'dining-room',
+    'frames-wall',
+    'frida-mural',
+    'catrina-mural',
+    'counter',
+    'green-wall',
+    'terrace-night',
+    'green-ceiling',
+  ];
+  const polish = (img) => img.modulate({ saturation: 1.06 }).sharpen({ sigma: 0.8 });
+  for (const name of names) {
+    const src = `assets-src/photos/${name}.jpg`;
+    await polish(sharp(src).resize(1600, 1600, { fit: 'inside' })).webp({ quality: 80 }).toFile(`${OUT}/${name}.webp`);
+    await polish(sharp(src).resize(800, 800, { fit: 'inside' })).webp({ quality: 78 }).toFile(`${OUT}/${name}-800.webp`);
   }
+  // the painted Catrina's face, cropped above the customers' heads, for the About oval
+  await polish(sharp('assets-src/photos/catrina-mural.jpg').extract({ left: 1320, top: 680, width: 427, height: 533 }))
+    .resize({ width: 400 })
+    .webp({ quality: 82 })
+    .toFile(`${OUT}/catrina-face.webp`);
 }
 
 /**
@@ -119,13 +133,8 @@ async function enhance(src, name, { crop, saturation = 1.08, brightness = 1.02 }
 
 async function extras() {
   await enhance('assets-src/neon-catrina.jpg', 'neon-catrina');
-  // crop away the neighbouring business sign above the café
-  await enhance('assets-src/storefront.jpg', 'storefront', {
-    crop: { left: 0, top: 118, width: 335, height: 479 },
-    saturation: 1.12,
-  });
 }
 
-await Promise.all([cutoutLogo(), interior(), extras()]);
+await Promise.all([cutoutLogo(), photos(), extras()]);
 await shareCard({ interior: 'assets-src/interior.webp', logo: `${OUT}/catrina-logo.webp`, out: `${OUT}/og-image.jpg` });
 console.log('Images written to', OUT);

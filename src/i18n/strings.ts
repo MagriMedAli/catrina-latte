@@ -45,8 +45,8 @@ const en = {
       { title: 'Good moments', text: 'A colourful corner for slow mornings, long catch-ups and golden evenings.' },
     ],
     photoAlt:
-      'Inside Catrina Latte: turquoise walls, a colourful floral mural of a woman crowned with flowers, woven pendant lights and greenery hanging from the ceiling',
-    detailAlt: 'Detail of the café’s mural — a portrait crowned with flowers',
+      'Inside Catrina Latte: a ceiling of hanging greenery and woven lanterns above velvet chairs, with white blossoms and a turquoise ceiling band',
+    detailAlt: 'Detail of the café’s Catrina mural — a painted sugar-skull face under woven lanterns',
     stamp: 'desde Monastir',
   },
   menu: {
@@ -64,11 +64,14 @@ const en = {
     title: ['Come for the coffee, ', 'stay for the colour.'],
     intro: 'Every corner is painted, planted or lit with care — from the terrace on the street to the glowing Catrina inside.',
     tiles: {
-      interior: { caption: 'The dining room', alt: 'The dining room at Catrina Latte with its turquoise walls, floral mural and woven lights' },
+      frames: { caption: 'The wall of Catrinas', alt: 'A wall of framed sugar-skull drawings around a glowing Catrina painting, above the pastry counter' },
+      room: { caption: 'The dining room', alt: 'The main dining room under a ceiling of greenery and woven lanterns, with velvet chairs and a bookshelf corner at the back' },
+      frida: { caption: 'Frida, in full bloom', alt: 'A large painted mural of Frida Kahlo crowned with flowers, beside a parrot and tropical leaves' },
+      catrina: { caption: 'Our Catrina mural', alt: 'A huge painted Catrina face with a coral flower headdress, lit by hanging rattan lanterns' },
       neon: { caption: 'Our glowing Catrina', alt: 'A glowing Catrina portrait with luminous roses, beside a woven pendant light and white blossoms' },
-      storefront: { caption: 'The terrace, Monastir', alt: 'The Catrina Latte storefront with its green sign, black awning and planters of tropical plants' },
-      lanterns: { caption: 'Woven lanterns & hanging greens', alt: 'Woven rattan pendant lights hanging from a ceiling covered in greenery' },
-      mural: { caption: 'The flower-crowned mural', alt: 'Mural of a woman with a crown of flowers surrounded by painted tropical blooms' },
+      counter: { caption: 'The pastry counter', alt: 'The wood-slatted counter and its cake display, under hanging greens and lanterns' },
+      garden: { caption: 'The green wall', alt: 'A turquoise corner with backlit walls of leaves and flowers and woven pendant lights' },
+      terrace: { caption: 'The terrace by night', alt: 'The Catrina Latte terrace at night, its neon sign glowing above the umbrellas and planters' },
     },
   },
   visit: {
@@ -201,8 +204,8 @@ const fr: Strings = {
       { title: 'Bons moments', text: 'Un coin coloré pour les matins tranquilles, les longues discussions et les soirées dorées.' },
     ],
     photoAlt:
-      'L’intérieur de Catrina Latte : murs turquoise, fresque fleurie d’une femme couronnée de fleurs, suspensions tressées et verdure au plafond',
-    detailAlt: 'Détail de la fresque du café — un portrait couronné de fleurs',
+      'L’intérieur de Catrina Latte : un plafond de verdure et de lanternes tressées au-dessus des fauteuils de velours, avec des fleurs blanches et un bandeau turquoise',
+    detailAlt: 'Détail de la fresque Catrina du café — un visage de tête de mort peint sous des lanternes tressées',
     stamp: 'desde Monastir',
   },
   menu: {
@@ -220,11 +223,14 @@ const fr: Strings = {
     title: ['Venez pour le café, ', 'restez pour les couleurs.'],
     intro: 'Chaque recoin est peint, fleuri ou éclairé avec soin — de la terrasse sur la rue jusqu’à la Catrina lumineuse à l’intérieur.',
     tiles: {
-      interior: { caption: 'La salle', alt: 'La salle de Catrina Latte avec ses murs turquoise, sa fresque fleurie et ses lanternes tressées' },
+      frames: { caption: 'Le mur des Catrinas', alt: 'Un mur de dessins de têtes de mort encadrés autour d’un tableau de Catrina lumineux, au-dessus du comptoir' },
+      room: { caption: 'La salle', alt: 'La grande salle sous un plafond de verdure et de lanternes tressées, avec ses fauteuils de velours et un coin bibliothèque au fond' },
+      frida: { caption: 'Frida, en pleine floraison', alt: 'Une grande fresque de Frida Kahlo couronnée de fleurs, à côté d’un perroquet et de feuilles tropicales' },
+      catrina: { caption: 'Notre fresque Catrina', alt: 'Un immense visage de Catrina peint, coiffé de fleurs corail, éclairé par des lanternes en rotin' },
       neon: { caption: 'Notre Catrina lumineuse', alt: 'Un portrait de Catrina lumineux aux roses éclairées, près d’une suspension tressée et de fleurs blanches' },
-      storefront: { caption: 'La terrasse, Monastir', alt: 'La devanture de Catrina Latte avec son enseigne verte, son store noir et ses jardinières de plantes tropicales' },
-      lanterns: { caption: 'Lanternes tressées & verdure', alt: 'Suspensions en rotin tressé sous un plafond couvert de verdure' },
-      mural: { caption: 'La fresque couronnée de fleurs', alt: 'Fresque d’une femme couronnée de fleurs entourée de fleurs tropicales peintes' },
+      counter: { caption: 'Le comptoir des douceurs', alt: 'Le comptoir en lattes de bois et sa vitrine à gâteaux, sous la verdure et les lanternes' },
+      garden: { caption: 'Le mur végétal', alt: 'Un coin turquoise aux murs de feuilles et de fleurs rétroéclairés, sous des suspensions tressées' },
+      terrace: { caption: 'La terrasse, le soir', alt: 'La terrasse de Catrina Latte le soir, son enseigne lumineuse au-dessus des parasols et des jardinières' },
     },
   },
   visit: {

@@ -32,9 +32,14 @@
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-rows: clamp(150px, 17vw, 240px);
   grid-template-areas:
-    'a a a a b b b b c c c c'
-    'a a a a b b b b c c c c'
-    'a a a a d d d d e e e e';
+    'a a a a b b b b b b b b'
+    'a a a a b b b b b b b b'
+    'c c c c c c d d d d d d'
+    'c c c c c c d d d d d d'
+    'e e e e f f f f g g g g'
+    'e e e e f f f f g g g g'
+    'h h h h h h h h h h h h'
+    'h h h h h h h h h h h h';
   gap: clamp(0.75rem, 1.6vw, 1.25rem);
 }
 
@@ -52,10 +57,16 @@
   border-radius: 14px 90px 14px 14px;
 }
 .gtile--c {
-  border-radius: 90px 14px 14px 14px;
+  border-radius: 14px 14px 14px 90px;
+}
+.gtile--d {
+  border-radius: 14px 14px 90px 14px;
 }
 .gtile--e {
-  border-radius: 14px 14px 90px 14px;
+  border-radius: 999px 999px 14px 14px;
+}
+.gtile--h {
+  border-radius: 90px 90px 14px 14px;
 }
 
 .gtile img {
@@ -64,8 +75,24 @@
   object-fit: cover;
   transition: transform 1.2s var(--ease);
 }
+/* keep the subject of each photo in frame when the tile crops it */
 .gtile--a img {
-  object-position: 50% 40%;
+  object-position: 50% 30%;
+}
+.gtile--c img {
+  object-position: 40% 35%;
+}
+.gtile--d img {
+  object-position: 72% 45%;
+}
+.gtile--f img {
+  object-position: 35% 60%;
+}
+.gtile--g img {
+  object-position: 30% 50%;
+}
+.gtile--h img {
+  object-position: 50% 16%;
 }
 .gtile:hover img {
   transform: scale(1.06);
@@ -107,14 +134,17 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: clamp(150px, 42vw, 260px);
     grid-template-areas:
-      'a a'
-      'a a'
-      'b c'
-      'b c'
-      'd e';
+      'b b'
+      'a e'
+      'a e'
+      'c c'
+      'd d'
+      'f g'
+      'h h';
   }
-  .gtile--a {
-    border-radius: 999px 999px 14px 14px;
+  .gtile--b,
+  .gtile--h {
+    border-radius: 60px 60px 14px 14px;
   }
 }
 

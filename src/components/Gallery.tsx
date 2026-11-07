@@ -13,17 +13,25 @@ type Tile = {
   area: string;
   key: keyof Strings['gallery']['tiles'];
   src: string;
+  /** half-size copy for the grid on phones */
+  small?: string;
   w: number;
   h: number;
 };
 
-/** To add photos: drop an optimised WebP in /public/images, add a tile + its caption in strings.ts. */
+/**
+ * To add photos: put the original in /assets-src/photos, list it in scripts/optimize-images.mjs,
+ * run `npm run images`, then add a tile here, its caption in strings.ts and its spot in Gallery.css.
+ */
 const TILES: Tile[] = [
-  { area: 'a', key: 'interior', src: '/images/interior.webp', w: 765, h: 1020 },
-  { area: 'b', key: 'neon', src: '/images/neon-catrina.webp', w: 960, h: 1280 },
-  { area: 'c', key: 'storefront', src: '/images/storefront.webp', w: 670, h: 958 },
-  { area: 'd', key: 'lanterns', src: '/images/interior-lanterns.webp', w: 640, h: 420 },
-  { area: 'e', key: 'mural', src: '/images/interior-mural.webp', w: 465, h: 330 },
+  { area: 'a', key: 'frames', src: '/images/frames-wall.webp', small: '/images/frames-wall-800.webp', w: 1200, h: 1600 },
+  { area: 'b', key: 'room', src: '/images/dining-room.webp', small: '/images/dining-room-800.webp', w: 1600, h: 1200 },
+  { area: 'c', key: 'frida', src: '/images/frida-mural.webp', small: '/images/frida-mural-800.webp', w: 1600, h: 1200 },
+  { area: 'd', key: 'catrina', src: '/images/catrina-mural.webp', small: '/images/catrina-mural-800.webp', w: 1600, h: 1200 },
+  { area: 'e', key: 'neon', src: '/images/neon-catrina.webp', w: 960, h: 1280 },
+  { area: 'f', key: 'counter', src: '/images/counter.webp', small: '/images/counter-800.webp', w: 1600, h: 1200 },
+  { area: 'g', key: 'garden', src: '/images/green-wall.webp', small: '/images/green-wall-800.webp', w: 1600, h: 1200 },
+  { area: 'h', key: 'terrace', src: '/images/terrace-night.webp', small: '/images/terrace-night-800.webp', w: 1600, h: 1200 },
 ];
 
 function Lightbox({ index, onClose, onNav }: { index: number; onClose: () => void; onNav: (d: number) => void }) {
@@ -160,7 +168,15 @@ export function Gallery() {
                 aria-label={`${t.galleryExtra.view}: ${g.tiles[tile.key].caption}`}
                 onClick={() => setOpen(i)}
               >
-                <img src={tile.src} alt={g.tiles[tile.key].alt} width={tile.w} height={tile.h} loading="lazy" />
+                <img
+                  src={tile.src}
+                  srcSet={tile.small ? `${tile.small} ${tile.w / 2}w, ${tile.src} ${tile.w}w` : undefined}
+                  sizes="(max-width: 860px) 92vw, 60vw"
+                  alt={g.tiles[tile.key].alt}
+                  width={tile.w}
+                  height={tile.h}
+                  loading="lazy"
+                />
               </button>
               <figcaption>
                 <span>{g.tiles[tile.key].caption}</span>

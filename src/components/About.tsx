@@ -26,19 +26,19 @@ export function About() {
 
           <motion.figure className="about__photo" style={{ y: bigY }}>
             <motion.img
-              src="/images/interior.webp"
-              srcSet="/images/interior-480.webp 480w, /images/interior.webp 765w"
+              src="/images/green-ceiling.webp"
+              srcSet="/images/green-ceiling-800.webp 600w, /images/green-ceiling.webp 1200w"
               sizes="(max-width: 860px) 86vw, 460px"
               alt={a.photoAlt}
-              width={765}
-              height={1020}
+              width={1200}
+              height={1600}
               loading="lazy"
               style={{ scale: imgScale }}
             />
           </motion.figure>
 
           <motion.figure className="about__oval" style={{ y: smallY }}>
-            <img src="/images/interior-face.webp" alt={a.detailAlt} width={200} height={220} loading="lazy" />
+            <img src="/images/catrina-face.webp" alt={a.detailAlt} width={400} height={499} loading="lazy" />
           </motion.figure>
 
           <div className="about__stamp" aria-hidden="true">
